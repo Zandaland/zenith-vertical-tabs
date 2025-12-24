@@ -1,0 +1,77 @@
+{
+    "manifest_version": 3,
+    "name": "Zenith Vertical Tabs",
+    "version": "1.0.0",
+    "description": "A premium Zen-inspired vertical sidebar that appears on hover or with Alt+V",
+    "permissions": [
+        "tabs",
+        "tabGroups",
+        "activeTab",
+        "history",
+        "topSites",
+        "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "styles.css"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Zenith Vertical Tabs",
+        "default_icon": "icon-48.png"
+    },
+    "commands": {
+        "toggle-sidebar": {
+            "suggested_key": {
+                "default": "Alt+V",
+                "windows": "Alt+V",
+                "mac": "Alt+V"
+            },
+            "description": "Toggle Zenith sidebar"
+        },
+        "open-url-bar": {
+            "suggested_key": {
+                "default": "Alt+T",
+                "windows": "Alt+T",
+                "mac": "Alt+T"
+            },
+            "description": "Open new tab (URL bar)"
+        },
+        "edit-url-bar": {
+            "suggested_key": {
+                "default": "Alt+K",
+                "windows": "Alt+K",
+                "mac": "Alt+K"
+            },
+            "description": "Edit current page URL"
+        }
+    },
+    "icons": {
+        "16": "icon-16.png",
+        "48": "icon-48.png",
+        "128": "icon-128.png"
+    }
+}

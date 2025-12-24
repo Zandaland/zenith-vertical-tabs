@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: rgba(22, 22, 22, 0.98);
+      --bg-deep: rgba(10, 10, 10, 0.4);
+      --bg-hover: rgba(255, 255, 255, 0.08);
+      --bg-active: rgba(255, 255, 255, 0.12);
+      --border: rgba(255, 255, 255, 0.07);
+      --text: #f2f2f2;
+      --text-secondary: #999;
+      --text-muted: #666;
+    }
+
+    body {
+      width: 280px;
+      max-height: 520px;
+      background: var(--bg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 12px 10px 12px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-btn {
+      width: 26px;
+      height: 26px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text);
+    }
+
+    .nav-btn:active {
+      transform: scale(0.92);
+    }
+
+    .nav-btn svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .icon-btn {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .icon-btn:hover {
+      background: var(--bg-hover);
+      color: var(--text);
+    }
+
+    .icon-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .url-section {
+      padding: 0 12px 12px 12px;
+    }
+
+    .url-bar {
+      width: 100%;
+      height: 36px;
+      background: var(--bg-deep);
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 0 14px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      outline: none;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .url-bar:hover {
+      background: rgba(0, 0, 0, 0.5);
+      color: var(--text);
+    }
+
+    .url-bar:focus {
+      background: rgba(0, 0, 0, 0.7);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.1);
+      text-align: left;
+    }
+
+    .url-bar::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-wrap {
+      padding: 0 12px 10px 12px;
+    }
+
+    .search {
+      width: 100%;
+      height: 32px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      padding: 0;
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search::placeholder {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .search:focus {
+      border-color: var(--text-secondary);
+    }
+
+    .tabs {
+      max-height: 340px;
+      overflow-y: auto;
+      padding: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    }
+
+    .tabs::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .tabs::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .tabs::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+    }
+
+    .tabs::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: default;
+      margin-bottom: 2px;
+      transition: background 0.15s;
+      border: 1px solid transparent;
+    }
+
+    .tab:hover {
+      background: var(--bg-hover);
+    }
+
+    .tab.active {
+      background: var(--bg-active);
+    }
+
+    .favicon {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      background: var(--bg-hover);
+      flex-shrink: 0;
+    }
+
+    .tab-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .title {
+      font-size: 13px;
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tab.active .title {
+      font-weight: 500;
+    }
+
+
+
+    .close {
+      width: 20px;
+      height: 20px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.1s;
+      flex-shrink: 0;
+    }
+
+    .close svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .tab:hover .close {
+      opacity: 1;
+    }
+
+    .close:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+
+    .empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 12px 16px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      opacity: 0.7;
+    }
+
+    .shortcut {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .key {
+      background: var(--bg-hover);
+      padding: 2px 5px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      font-family: 'SF Mono', Consolas, monospace;
+      font-size: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-left">
+      <button class="nav-btn" id="back-btn" title="Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button class="nav-btn" id="forward-btn" title="Forward">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </button>
+      <button class="nav-btn" id="refresh-btn" title="Refresh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 4v6h-6M1 20v-6h6" />
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+        </svg>
+      </button>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="new-tab" title="New tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="url-section">
+    <input type="text" class="url-bar" id="url-bar" placeholder="Search or enter URL..." autocomplete="off"
+      spellcheck="false">
+  </div>
+  <div class="search-wrap">
+    <input type="text" class="search" id="search" placeholder="Search tabs..." autocomplete="off">
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="footer">
+    <div class="shortcut">
+      <span class="key">Alt</span>
+      <span class="key">V</span>
+      <span>toggle</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
+</style>
+</head>
