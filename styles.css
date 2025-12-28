@@ -763,6 +763,7 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     z-index: 2147483647;
     backdrop-filter: none;
+    pointer-events: auto;
 }
 
 .vt-context-item {
@@ -918,6 +919,7 @@
     min-width: 180px;
     box-shadow: 10px 8px 24px rgba(0, 0, 0, 0.6);
     z-index: 2147483647;
+    pointer-events: auto;
 }
 
 .vt-context-submenu::after {

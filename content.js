@@ -1207,7 +1207,13 @@
         }
     }
 
-    document.addEventListener('click', hideContextMenu);
+    // Listen on container instead of document since we're in a shadow DOM
+    container.addEventListener('click', (e) => {
+        // Hide context menu when clicking outside of it
+        if (contextMenu && !contextMenu.contains(e.target)) {
+            hideContextMenu();
+        }
+    });
 
     function expand() {
         if (isExpanded) return;
