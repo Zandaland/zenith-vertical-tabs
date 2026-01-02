@@ -13,7 +13,7 @@ import { checkOnboarding, setupOnboardingListeners } from './onboarding.js';
 
 // Prevent duplicate injection
 if (document.getElementById('vertical-tabs-host')) {
-    throw new Error('Zenith already injected');
+  throw new Error('Zenith already injected');
 }
 
 // Create Shadow DOM host element for CSS isolation
@@ -31,11 +31,11 @@ host.style.cssText = `
 `;
 
 function inject() {
-    if (!document.body) {
-        setTimeout(inject, 50);
-        return;
-    }
-    document.body.appendChild(host);
+  if (!document.body) {
+    setTimeout(inject, 50);
+    return;
+  }
+  document.body.appendChild(host);
 }
 inject();
 
@@ -79,6 +79,9 @@ container.innerHTML = `
           <span class="vt-key">V</span>
           <span class="vt-shortcut-text">toggle</span>
         </div>
+        <a href="https://buymeacoffee.com/azizln" target="_blank" rel="noopener" class="vt-coffee-link" title="Buy me a coffee ☕">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+        </a>
       </div>
     </div>
     <div id="vt-modal-overlay">
@@ -291,53 +294,53 @@ elements.newTabBtn.addEventListener('click', () => openUrlModal('new-tab'));
 
 // Create group button
 if (elements.createGroupBtn) {
-    elements.createGroupBtn.addEventListener('click', openGroupModal);
+  elements.createGroupBtn.addEventListener('click', openGroupModal);
 }
 
 // Global keyboard shortcuts (fallback - main shortcuts via Chrome commands API)
 document.addEventListener('keydown', (e) => {
-    if (e.altKey && e.key.toLowerCase() === 'v') {
-        e.preventDefault();
-        toggle();
-        if (state.isExpanded) {
-            fetchTabs();
-            updateUrlBarDisplay();
-        }
+  if (e.altKey && e.key.toLowerCase() === 'v') {
+    e.preventDefault();
+    toggle();
+    if (state.isExpanded) {
+      fetchTabs();
+      updateUrlBarDisplay();
     }
-    if (e.altKey && e.key.toLowerCase() === 't') {
-        e.preventDefault();
-        openUrlModal('new-tab');
-    }
-    if (e.altKey && e.key.toLowerCase() === 'k') {
-        e.preventDefault();
-        openUrlModal('edit-url', window.location.href);
-    }
+  }
+  if (e.altKey && e.key.toLowerCase() === 't') {
+    e.preventDefault();
+    openUrlModal('new-tab');
+  }
+  if (e.altKey && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    openUrlModal('edit-url', window.location.href);
+  }
 });
 
 // Listen for messages from background
 if (isExtensionValid()) {
-    try {
-        chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-            if (request.action === 'toggle-sidebar') {
-                toggle();
-                if (state.isExpanded) {
-                    fetchTabs();
-                    updateUrlBarDisplay();
-                }
-                sendResponse({ success: true });
-            }
-            if (request.action === 'open-url-modal') {
-                openUrlModal(request.mode, request.currentUrl);
-                sendResponse({ success: true });
-            }
-            if (request.action === 'tabs-updated') {
-                state.tabs = request.tabs || [];
-                state.groups = request.groups || {};
-                debouncedRenderTabs();
-                sendResponse({ success: true });
-            }
-        });
-    } catch (e) { }
+  try {
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+      if (request.action === 'toggle-sidebar') {
+        toggle();
+        if (state.isExpanded) {
+          fetchTabs();
+          updateUrlBarDisplay();
+        }
+        sendResponse({ success: true });
+      }
+      if (request.action === 'open-url-modal') {
+        openUrlModal(request.mode, request.currentUrl);
+        sendResponse({ success: true });
+      }
+      if (request.action === 'tabs-updated') {
+        state.tabs = request.tabs || [];
+        state.groups = request.groups || {};
+        debouncedRenderTabs();
+        sendResponse({ success: true });
+      }
+    });
+  } catch (e) { }
 }
 
 // Initial setup
