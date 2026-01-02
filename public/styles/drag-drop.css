@@ -1,0 +1,224 @@
+/* Zenith Vertical Tabs - Drag and Drop Styles */
+/* All drag states, drop indicators, zones, and animations */
+
+/* Group drop indicator - top */
+.vt-group.drag-over::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -3px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    animation: dropIndicatorPulse 1.5s ease-in-out infinite;
+}
+
+/* Group drop indicator - bottom */
+.vt-group.drag-over-below::before {
+    top: auto;
+    bottom: -3px;
+}
+
+/* Group being hovered for drop */
+.vt-group.drop-target-group {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    outline: 1px dashed rgba(255, 255, 255, 0.25);
+    outline-offset: 2px;
+}
+
+/* Group header when receiving a drop */
+.vt-group-header.drag-target {
+    background: var(--bg-active) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    transform: scale(1.01);
+}
+
+.vt-group-header.drag-target .vt-group-dot {
+    transform: scale(1.2);
+}
+
+/* Highlight group tabs border when dragging into group */
+.vt-group.drop-target-group .vt-group-tabs {
+    border-left-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Dragging tab - the source element */
+.vt-tab.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+    background: var(--bg-active);
+    pointer-events: none;
+}
+
+/* Tab hover while dragging is active */
+.vt-tab.drag-over {
+    background: var(--bg-active);
+    transform: translateY(2px);
+}
+
+/* Drop indicator line */
+.vt-tab.drag-over::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -3px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    animation: dropIndicatorPulse 1.5s ease-in-out infinite;
+}
+
+/* Drop indicator below */
+.vt-tab.drag-over-below::before {
+    top: auto;
+    bottom: -3px;
+}
+
+.vt-tab.drag-over-below {
+    transform: translateY(-2px);
+}
+
+/* Drop indicator pulse animation */
+@keyframes dropIndicatorPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+    }
+
+    50% {
+        opacity: 0.7;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Drag ghost element styles (applied via JS) */
+.vt-drag-ghost {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999999;
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    max-width: 200px;
+    transform: rotate(-2deg) scale(1.02);
+    animation: dragGhostAppear 0.15s ease-out;
+}
+
+.vt-drag-ghost img {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+}
+
+.vt-drag-ghost span {
+    font-size: 12px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@keyframes dragGhostAppear {
+    from {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotate(-2deg) scale(1.02);
+    }
+}
+
+/* Drop zone for removing from group */
+.vt-ungroup-zone {
+    display: none;
+    position: absolute;
+    bottom: 60px;
+    left: 12px;
+    right: 12px;
+    height: 44px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px dashed rgba(239, 68, 68, 0.4);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: rgba(239, 68, 68, 0.8);
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.vt-ungroup-zone.visible {
+    display: flex;
+    animation: ungroupZoneAppear 0.2s ease-out;
+}
+
+.vt-ungroup-zone.drag-over {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.7);
+    color: #ef4444;
+    transform: scale(1.02);
+}
+
+.vt-ungroup-zone svg {
+    width: 16px;
+    height: 16px;
+}
+
+@keyframes ungroupZoneAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Drop zone for creating new groups */
+.vt-drop-zone {
+    margin: 8px 8px 4px 8px !important;
+    padding: 12px !important;
+    border: 2px dashed #333;
+    border-radius: 8px;
+    text-align: center;
+    color: #666;
+    font-size: 12px;
+    transition: all 0.15s;
+    opacity: 0;
+    height: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+
+.vt-drop-zone.visible {
+    opacity: 1;
+    height: auto;
+    padding: 12px !important;
+    margin: 8px 8px 4px 8px !important;
+}
+
+.vt-drop-zone.drag-over {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}

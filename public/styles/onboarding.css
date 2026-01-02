@@ -1,0 +1,221 @@
+/* Zenith Vertical Tabs - Onboarding Styles */
+/* Onboarding overlay, modal, steps, and animations */
+
+/* Onboarding Experience */
+#vt-onboarding-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2147483647;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#vt-onboarding-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#vt-onboarding-modal {
+    width: 480px;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#vt-onboarding-overlay.active #vt-onboarding-modal {
+    transform: translateY(0) scale(1);
+}
+
+.vt-onboarding-content {
+    padding: 40px;
+    flex: 1;
+}
+
+.vt-onboarding-step {
+    display: none;
+    animation: vt-fade-in 0.4s ease-out;
+}
+
+.vt-onboarding-step.active {
+    display: block;
+}
+
+@keyframes vt-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.vt-onboarding-icon-wrap {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.vt-onboarding-icon-wrap svg {
+    width: 32px;
+    height: 32px;
+}
+
+.vt-onboarding-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.vt-onboarding-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #999;
+    margin-bottom: 24px;
+}
+
+.vt-onboarding-shorcut-tip {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vt-onboarding-footer {
+    padding: 24px 40px 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.vt-onboarding-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.vt-onboarding-dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.vt-onboarding-dot.active {
+    background: #fff;
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.vt-onboarding-btns {
+    display: flex;
+    gap: 12px;
+}
+
+.vt-onboarding-btn {
+    padding: 10px 20px !important;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.vt-onboarding-btn-secondary {
+    background: transparent;
+    color: #666;
+}
+
+.vt-onboarding-btn-secondary:hover {
+    color: #fff;
+}
+
+.vt-onboarding-btn-primary {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.vt-onboarding-btn-primary:hover {
+    background: #e8e8e8;
+    transform: translateY(-1px);
+}
+
+.vt-onboarding-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.vt-onboarding-refresh-note {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.vt-onboarding-refresh-text {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.vt-onboarding-refresh-icon {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.vt-onboarding-refresh-btn {
+    width: 100%;
+    padding: 12px !important;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.vt-onboarding-refresh-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.vt-onboarding-refresh-btn:active {
+    transform: scale(0.98);
+}

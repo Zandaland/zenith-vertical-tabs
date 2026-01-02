@@ -1,0 +1,318 @@
+/* Zenith Vertical Tabs - Modal Styles */
+/* URL modal (command palette) and group creation modal */
+
+/* URL Modal - Zen-style Command Palette */
+#vt-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 18vh;
+    z-index: 2147483647;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+#vt-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#vt-modal {
+    width: 560px;
+    max-width: 92vw;
+    background: rgba(22, 22, 22, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    box-shadow: 0 32px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transform: translateY(-30px) scale(0.96);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#vt-modal-overlay.active #vt-modal {
+    transform: translateY(0) scale(1);
+}
+
+#vt-modal-input {
+    width: 100%;
+    height: 68px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0 28px;
+    color: #fff;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    outline: none;
+}
+
+#vt-modal-input::placeholder {
+    color: #555;
+}
+
+#vt-modal-suggestions {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 12px 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+#vt-modal-suggestions::-webkit-scrollbar {
+    width: 6px;
+}
+
+#vt-modal-suggestions::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#vt-modal-suggestions::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.vt-modal-suggestion {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    margin: 2px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.vt-modal-suggestion:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.vt-modal-suggestion.selected {
+    background: rgba(255, 255, 255, 0.12);
+    border-left: 3px solid #fff;
+    padding-left: 17px;
+}
+
+.vt-modal-suggestion.selected .vt-modal-suggestion-title {
+    color: #fff;
+}
+
+.vt-modal-suggestion-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0.5;
+}
+
+.vt-modal-suggestion-favicon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.vt-modal-suggestion-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.vt-modal-suggestion-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #f2f2f2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vt-suggestion-tag {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.vt-modal-suggestion.selected .vt-suggestion-tag {
+    background: var(--accent);
+    color: #fff;
+}
+
+.vt-modal-suggestion-url {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+}
+
+/* Tab Group Creation Modal */
+#vt-group-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 20vh !important;
+    z-index: 2147483647;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+#vt-group-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#vt-group-modal {
+    width: 320px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transform: translateY(-20px) scale(0.95);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#vt-group-modal-overlay.active #vt-group-modal {
+    transform: translateY(0) scale(1);
+}
+
+.vt-group-modal-header {
+    padding: 16px 20px !important;
+    border-bottom: 1px solid #333;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.vt-group-modal-content {
+    padding: 16px 20px !important;
+}
+
+.vt-group-modal-field {
+    margin-bottom: 16px !important;
+}
+
+.vt-group-modal-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 8px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.vt-group-modal-input {
+    width: 100%;
+    height: 40px;
+    background: #252525;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 0 14px !important;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.vt-group-modal-input:focus {
+    border-color: #555;
+}
+
+.vt-group-modal-colors {
+    display: flex;
+    gap: 8px !important;
+    flex-wrap: wrap;
+}
+
+.vt-group-color-option {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.1s, border-color 0.1s;
+}
+
+.vt-group-color-option:hover {
+    transform: scale(1.1);
+}
+
+.vt-group-color-option.selected {
+    border-color: #fff;
+    transform: scale(1.1);
+}
+
+.vt-group-modal-footer {
+    display: flex;
+    gap: 10px !important;
+    padding: 14px 20px !important;
+    border-top: 1px solid #333;
+    justify-content: flex-end;
+}
+
+.vt-group-modal-btn {
+    padding: 8px 16px !important;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.vt-group-modal-btn:active {
+    transform: scale(0.97);
+}
+
+.vt-group-modal-btn-secondary {
+    background: #333;
+    color: #e8e8e8;
+}
+
+.vt-group-modal-btn-secondary:hover {
+    background: #404040;
+}
+
+.vt-group-modal-btn-primary {
+    background: #fff;
+    color: #161616;
+}
+
+.vt-group-modal-btn-primary:hover {
+    background: #e8e8e8;
+}

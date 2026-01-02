@@ -24,7 +24,7 @@ npm run dev      # Watch mode
 | `src/content/index.js` | Content script entry |
 | `src/background.js` | Service worker |
 | `public/manifest.json` | Extension manifest |
-| `public/styles.css` | All styles |
+| `public/styles/` | All styles (modular) |
 | `vite.config.js` | Build configuration |
 
 ### Message Actions

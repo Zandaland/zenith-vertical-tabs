@@ -240,10 +240,22 @@ essentialStyles.textContent = `
 shadow.appendChild(essentialStyles);
 
 // Inject styles into shadow DOM
-const styleLink = document.createElement('link');
-styleLink.rel = 'stylesheet';
-styleLink.href = chrome.runtime.getURL('styles.css');
-shadow.appendChild(styleLink);
+const cssFiles = [
+  'styles/base.css',
+  'styles/sidebar.css',
+  'styles/tabs.css',
+  'styles/drag-drop.css',
+  'styles/context-menu.css',
+  'styles/modals.css',
+  'styles/onboarding.css'
+];
+
+cssFiles.forEach(file => {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = chrome.runtime.getURL(file);
+  shadow.appendChild(link);
+});
 
 // Show container
 container.style.visibility = 'visible';

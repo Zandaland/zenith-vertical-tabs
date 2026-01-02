@@ -31,7 +31,13 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "styles.css"
+                "styles/base.css",
+                "styles/sidebar.css",
+                "styles/tabs.css",
+                "styles/drag-drop.css",
+                "styles/context-menu.css",
+                "styles/modals.css",
+                "styles/onboarding.css"
             ],
             "matches": [
                 "<all_urls>"

@@ -54,7 +54,7 @@ The content script is modular. Each file has a specific responsibility:
 
 ### Styling
 
-All styles are in `public/styles.css`. The content script uses Shadow DOM for isolation.
+All styles are in `public/styles/` directory. The content script uses Shadow DOM for isolation.
 
 ## Code Style
 

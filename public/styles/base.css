@@ -1,0 +1,49 @@
+/* Zenith Vertical Tabs - Base Styles */
+/* Variables, container, trigger, and common utilities */
+
+#vertical-tabs-container {
+    --bg: rgba(22, 22, 22, 0.85);
+    --bg-deep: rgba(10, 10, 10, 0.4);
+    --bg-hover: rgba(255, 255, 255, 0.08);
+    --bg-active: rgba(255, 255, 255, 0.12);
+    --border: rgba(255, 255, 255, 0.07);
+    --text: #f2f2f2;
+    --text-secondary: #999;
+    --text-muted: #666;
+    --accent: #fff;
+    --radius: 12px;
+    --shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+    --vt-width: 260px;
+    --vt-collapsed-width: 10px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 2147483647;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+}
+
+#vertical-tabs-container * {
+    box-sizing: border-box;
+}
+
+#vertical-tabs-trigger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--vt-collapsed-width);
+    height: 100%;
+    background: transparent;
+    z-index: 2147483648;
+    cursor: pointer;
+}
+
+#vertical-tabs-trigger:hover {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+}
