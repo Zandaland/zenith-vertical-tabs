@@ -1,6 +1,6 @@
 {
     "name": "zenith-vertical-tabs",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A premium Zen-inspired vertical sidebar Chrome extension",
     "type": "module",
     "scripts": {

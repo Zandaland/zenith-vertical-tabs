@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Zenith Vertical Tabs",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A premium Zen-inspired vertical sidebar that appears on hover or with Alt+V",
     "permissions": [
         "tabs",
