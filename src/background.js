@@ -662,7 +662,7 @@ function debouncedNotifyTabChange(windowId) {
     if (notifyTimeout) clearTimeout(notifyTimeout);
     notifyTimeout = setTimeout(() => {
         notifyTabChange(windowId);
-    }, 16);
+    }, 50); // 50ms debounce to allow optimistic UI updates to settle
 }
 
 function notifyTabChange(windowId) {
@@ -712,6 +712,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     }
 });
 chrome.tabs.onActivated.addListener((activeInfo) => {
+    // Don't debounce - this is the authoritative source of truth for active state
     notifyTabChange(activeInfo.windowId);
     captureSnapshot(activeInfo.windowId);
 });

@@ -208,14 +208,14 @@ function render() {
 
     tabsEl.innerHTML = '';
 
-    filtered.forEach(tab => {
+    filtered.forEach((tab, index) => {
         const title = getDisplayTitle(tab);
         const domain = getDomain(tab.url);
         const fallback = getFallbackIcon(tab.url);
         const favicon = getBestFavicon(tab);
 
         const tabEl = document.createElement('div');
-        tabEl.className = `tab ${tab.active ? 'active' : ''}`;
+        tabEl.className = `tab ${tab.active ? 'active' : ''} ${index === selectedIndex ? 'selected' : ''}`;
 
         const img = document.createElement('img');
         img.className = 'favicon';
