@@ -1,7 +1,7 @@
 /* Zenith Vertical Tabs - Onboarding Styles */
-/* Onboarding overlay, modal, steps, and animations */
+/* Premium onboarding experience with animations matching Zenith's minimal aesthetic */
 
-/* Onboarding Experience */
+/* Overlay - lighter blur so sidebar is visible when user tries Alt+V */
 #vt-onboarding-overlay {
     position: fixed;
     top: 0;
@@ -9,15 +9,15 @@
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2147483647;
+    z-index: 2147483646;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 #vt-onboarding-overlay.active {
@@ -25,197 +25,600 @@
     visibility: visible;
 }
 
+/* Floating Particles - subtle white */
+.vt-onboarding-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.vt-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: vt-particle-float 15s infinite ease-in-out;
+}
+
+.vt-particle:nth-child(1) {
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
+.vt-particle:nth-child(2) {
+    left: 80%;
+    top: 15%;
+    animation-delay: 2s;
+    animation-duration: 18s;
+}
+
+.vt-particle:nth-child(3) {
+    left: 25%;
+    top: 70%;
+    animation-delay: 4s;
+    animation-duration: 14s;
+}
+
+.vt-particle:nth-child(4) {
+    left: 70%;
+    top: 80%;
+    animation-delay: 1s;
+    animation-duration: 16s;
+}
+
+.vt-particle:nth-child(5) {
+    left: 50%;
+    top: 50%;
+    animation-delay: 3s;
+    animation-duration: 20s;
+}
+
+@keyframes vt-particle-float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+
+    25% {
+        transform: translate(30px, -40px) scale(1.5);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-20px, 20px) scale(0.8);
+        opacity: 0.2;
+    }
+
+    75% {
+        transform: translate(40px, 30px) scale(1.2);
+        opacity: 0.4;
+    }
+}
+
+/* Modal Container */
 #vt-onboarding-modal {
-    width: 480px;
-    background: #1a1a1a;
+    width: 440px;
+    max-width: 90vw;
+    background: rgba(22, 22, 22, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 #vt-onboarding-overlay.active #vt-onboarding-modal {
     transform: translateY(0) scale(1);
 }
 
-.vt-onboarding-content {
-    padding: 40px;
-    flex: 1;
+/* Progress Bar */
+.vt-onboarding-progress {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
 }
 
+.vt-onboarding-progress-bar {
+    height: 100%;
+    width: 25%;
+    background: #fff;
+    border-radius: 0 2px 2px 0;
+    transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Content Area */
+.vt-onboarding-content {
+    padding: 40px 40px 32px 40px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Step Container */
 .vt-onboarding-step {
     display: none;
-    animation: vt-fade-in 0.4s ease-out;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: vt-step-slide-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .vt-onboarding-step.active {
-    display: block;
+    display: flex;
 }
 
-@keyframes vt-fade-in {
+@keyframes vt-step-slide-in {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateX(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
-.vt-onboarding-icon-wrap {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+/* Text Logo */
+.vt-onboarding-logo-text {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 24px;
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 30%, rgba(255, 255, 255, 0.4) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Illustrations */
+.vt-onboarding-illustration {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.vt-onboarding-illustration svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Logo animation */
+.vt-onboarding-logo-path {
+    animation: vt-logo-pulse 3s infinite ease-in-out;
+}
+
+@keyframes vt-logo-pulse {
+
+    0%,
+    100% {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* Sidebar reveal animation */
+.vt-onboarding-sidebar-rect {
+    animation: vt-sidebar-slide 2s infinite ease-in-out;
+}
+
+@keyframes vt-sidebar-slide {
+
+    0%,
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-3px);
+        opacity: 0.8;
+    }
+}
+
+.vt-onboarding-hover-arrow {
+    animation: vt-hover-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes vt-hover-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(5px);
+    }
+}
+
+/* Drag tab animation */
+.vt-onboarding-drag-tab {
+    animation: vt-drag-float 2.5s infinite ease-in-out;
+}
+
+@keyframes vt-drag-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Success circle animation */
+.vt-onboarding-success-circle {
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    animation: vt-circle-draw 1s 0.2s forwards ease-out;
+}
+
+@keyframes vt-circle-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.vt-onboarding-checkmark {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: vt-check-draw 0.5s 0.8s forwards ease-out;
+}
+
+@keyframes vt-check-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Badge */
+.vt-onboarding-badge {
+    display: inline-flex;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-    color: #fff;
-}
-
-.vt-onboarding-icon-wrap svg {
-    width: 32px;
-    height: 32px;
-}
-
-.vt-onboarding-title {
-    font-size: 24px;
+    font-size: 11px;
     font-weight: 600;
-    color: #fff;
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 16px;
 }
 
+.vt-onboarding-badge-success {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+/* Title */
+.vt-onboarding-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+/* Text */
 .vt-onboarding-text {
     font-size: 15px;
-    line-height: 1.6;
-    color: #999;
-    margin-bottom: 24px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0 0 24px 0;
+    max-width: 340px;
 }
 
-.vt-onboarding-shorcut-tip {
+.vt-onboarding-text strong {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+}
+
+/* Feature Grid (Welcome Step) */
+.vt-onboarding-feature-grid {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.vt-onboarding-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 20px;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.vt-onboarding-feature:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.vt-onboarding-feature svg {
+    width: 22px;
+    height: 22px;
+    color: #fff;
+}
+
+.vt-onboarding-feature span {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+}
+
+/* Refresh Note */
+.vt-onboarding-refresh-note {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 8px;
+    width: 100%;
+    max-width: 340px;
+}
+
+.vt-onboarding-refresh-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.vt-onboarding-refresh-icon {
+    font-size: 16px;
+}
+
+.vt-onboarding-refresh-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.vt-onboarding-refresh-text {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.vt-onboarding-refresh-btn {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vt-onboarding-refresh-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.vt-onboarding-refresh-btn:active {
+    transform: scale(0.98);
+}
+
+/* Shortcut Row */
+.vt-onboarding-shortcut-row {
+    display: flex;
+    justify-content: center;
+}
+
+.vt-onboarding-shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 32px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+}
+
+.vt-onboarding-keys {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.vt-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.vt-key-plus {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 400;
+}
+
+.vt-onboarding-shortcut-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Tip Box */
+.vt-onboarding-tip {
     display: flex;
     align-items: center;
     gap: 12px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    margin-top: 8px;
 }
 
+.vt-onboarding-tip svg {
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+}
+
+.vt-onboarding-tip span {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+}
+
+/* Shortcuts Grid (Final Step) */
+.vt-onboarding-shortcuts-grid {
+    display: flex;
+    gap: 12px;
+}
+
+.vt-onboarding-shortcut-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.vt-onboarding-shortcut-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+.vt-onboarding-shortcut-card span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Footer */
 .vt-onboarding-footer {
-    padding: 24px 40px 32px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 20px 32px 24px 32px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(255, 255, 255, 0.01);
+    background: rgba(0, 0, 0, 0.2);
 }
 
-.vt-onboarding-dots {
+/* Step Indicator */
+.vt-onboarding-step-indicator {
     display: flex;
-    gap: 8px;
-}
-
-.vt-onboarding-dot {
-    width: 6px;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transition: all 0.3s;
-}
-
-.vt-onboarding-dot.active {
-    background: #fff;
-    transform: scale(1.2);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-.vt-onboarding-btns {
-    display: flex;
-    gap: 12px;
-}
-
-.vt-onboarding-btn {
-    padding: 10px 20px !important;
-    border-radius: 10px;
-    font-size: 14px;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
     font-weight: 500;
+}
+
+.vt-onboarding-step-indicator span:first-child {
+    color: #fff;
+}
+
+.vt-onboarding-step-divider {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.vt-onboarding-step-indicator span:last-child {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Buttons */
+.vt-onboarding-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
     border: none;
-    transition: all 0.2s;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .vt-onboarding-btn-secondary {
     background: transparent;
-    color: #666;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 12px 16px;
 }
 
 .vt-onboarding-btn-secondary:hover {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .vt-onboarding-btn-primary {
     background: #fff;
     color: #000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .vt-onboarding-btn-primary:hover {
-    background: #e8e8e8;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.vt-onboarding-btn-primary svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.vt-onboarding-btn-primary:hover svg {
+    transform: translateX(3px);
 }
 
 .vt-onboarding-btn:active {
-    transform: translateY(0) scale(0.98);
-}
-
-.vt-onboarding-refresh-note {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 20px;
-    margin-top: 10px;
-}
-
-.vt-onboarding-refresh-text {
-    font-size: 14px;
-    color: #ccc;
-    line-height: 1.5;
-    margin-bottom: 16px;
-}
-
-.vt-onboarding-refresh-icon {
-    font-size: 20px;
-    margin-bottom: 12px;
-}
-
-.vt-onboarding-refresh-btn {
-    width: 100%;
-    padding: 12px !important;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.vt-onboarding-refresh-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.vt-onboarding-refresh-btn:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }

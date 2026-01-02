@@ -75,7 +75,6 @@ export const elements = {
     onboardingNextBtn: null,
     onboardingSkipBtn: null,
     onboardingSteps: null,
-    onboardingDots: null,
     onboardingRefreshBtn: null,
     resizeHandle: null
 };

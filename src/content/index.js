@@ -111,85 +111,126 @@ container.innerHTML = `
       </div>
     </div>
     <div id="vt-onboarding-overlay">
+      <div class="vt-onboarding-particles">
+        <div class="vt-particle"></div>
+        <div class="vt-particle"></div>
+        <div class="vt-particle"></div>
+        <div class="vt-particle"></div>
+        <div class="vt-particle"></div>
+      </div>
       <div id="vt-onboarding-modal">
+        <div class="vt-onboarding-progress">
+          <div class="vt-onboarding-progress-bar" id="vt-onboarding-progress-bar"></div>
+        </div>
         <div class="vt-onboarding-content">
           <div class="vt-onboarding-step active" data-step="1">
-            <div class="vt-onboarding-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="vt-onboarding-title">Welcome to Zenith</div>
-            <div class="vt-onboarding-text">
-              Transform your browsing with a premium, focused workspace. Zenith Vertical Tabs brings order to your digital life with a sleek Zen-inspired interface.
-            </div>
+            <div class="vt-onboarding-logo-text">ZENITH</div>
+            <div class="vt-onboarding-badge">Welcome</div>
+            <h2 class="vt-onboarding-title">Meet Zenith</h2>
+            <p class="vt-onboarding-text">
+              Your new vertical tabs experience. Clean, fast, and beautifully minimal.
+            </p>
             <div class="vt-onboarding-refresh-note">
-              <div class="vt-onboarding-refresh-icon">ℹ️</div>
-              <div class="vt-onboarding-refresh-text">
-                <b>One-time setup:</b> Please refresh your current tabs to enable Zenith everywhere.
+              <div class="vt-onboarding-refresh-header">
+                <span class="vt-onboarding-refresh-icon">ℹ️</span>
+                <span class="vt-onboarding-refresh-label">One-time setup</span>
               </div>
-              <button id="vt-onboarding-refresh-tabs-btn" class="vt-onboarding-refresh-btn">Refresh Now</button>
+              <div class="vt-onboarding-refresh-text">
+                Please refresh your current tabs to enable Zenith everywhere.
+              </div>
+              <button id="vt-onboarding-refresh-tabs-btn" class="vt-onboarding-refresh-btn">Refresh All Tabs</button>
             </div>
           </div>
           <div class="vt-onboarding-step" data-step="2">
-            <div class="vt-onboarding-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+            <div class="vt-onboarding-illustration">
+              <svg viewBox="0 0 120 120" fill="none">
+                <rect x="15" y="20" width="35" height="80" rx="6" stroke="#fff" stroke-width="2" fill="rgba(255,255,255,0.03)" class="vt-onboarding-sidebar-rect"/>
+                <rect x="55" y="20" width="50" height="80" rx="6" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
+                <circle cx="32" cy="35" r="4" fill="#fff" opacity="0.8"/>
+                <circle cx="32" cy="50" r="4" fill="#fff" opacity="0.6"/>
+                <circle cx="32" cy="65" r="4" fill="#fff" opacity="0.4"/>
+                <path d="M10 60L20 60" stroke="#fff" stroke-width="2" stroke-linecap="round" class="vt-onboarding-hover-arrow"/>
+              </svg>
             </div>
-            <div class="vt-onboarding-title">The Sidebar</div>
-            <div class="vt-onboarding-text">
-              Hover over the <b>left edge</b> of your screen to reveal your tabs. You can pin the sidebar to keep it permanently visible.
-            </div>
-            <div class="vt-onboarding-shorcut-tip">
-              <span class="vt-key">Alt</span> + <span class="vt-key">V</span>
-              <span class="vt-shortcut-text">Toggle Sidebar</span>
+            <div class="vt-onboarding-badge">Getting Started</div>
+            <h2 class="vt-onboarding-title">Access Your Tabs</h2>
+            <p class="vt-onboarding-text">
+              Hover the <strong>left edge</strong> of your screen to reveal the sidebar, or pin it open.
+            </p>
+            <div class="vt-onboarding-shortcut-row">
+              <div class="vt-onboarding-shortcut">
+                <div class="vt-onboarding-keys">
+                  <span class="vt-key">Alt</span>
+                  <span class="vt-key-plus">+</span>
+                  <span class="vt-key">V</span>
+                </div>
+                <span class="vt-onboarding-shortcut-label">Toggle Sidebar</span>
+              </div>
             </div>
           </div>
           <div class="vt-onboarding-step" data-step="3">
-            <div class="vt-onboarding-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+            <div class="vt-onboarding-illustration">
+              <svg viewBox="0 0 120 120" fill="none">
+                <rect x="20" y="25" width="80" height="20" rx="6" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="rgba(255,255,255,0.05)"/>
+                <rect x="25" y="30" width="10" height="10" rx="2" fill="#fff" opacity="0.6"/>
+                <rect x="40" y="32" width="40" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
+                <rect x="20" y="50" width="80" height="20" rx="6" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="rgba(255,255,255,0.08)" class="vt-onboarding-drag-tab"/>
+                <rect x="25" y="55" width="10" height="10" rx="2" fill="#fff" opacity="0.6"/>
+                <rect x="40" y="57" width="35" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
+                <rect x="20" y="75" width="80" height="20" rx="6" stroke="rgba(255,255,255,0.25)" stroke-width="2" fill="rgba(255,255,255,0.03)"/>
+                <rect x="25" y="80" width="10" height="10" rx="2" fill="#fff" opacity="0.6"/>
+                <rect x="40" y="82" width="45" height="6" rx="2" fill="rgba(255,255,255,0.3)"/>
+              </svg>
             </div>
-            <div class="vt-onboarding-title">Stay Organized</div>
-            <div class="vt-onboarding-text">
-              Keep your workflow clean by <b>Pinning</b> important tabs or creating <b>Groups</b>. Just right-click any tab or use the "New Group" button at the bottom.
+            <div class="vt-onboarding-badge">Organization</div>
+            <h2 class="vt-onboarding-title">Stay Organized</h2>
+            <p class="vt-onboarding-text">
+              <strong>Drag tabs</strong> to reorder, <strong>right-click</strong> for options, or create <strong>groups</strong> to keep related tabs together.
+            </p>
+            <div class="vt-onboarding-tip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <span>Pro tip: Drag a tab onto another to create a group instantly</span>
             </div>
           </div>
           <div class="vt-onboarding-step" data-step="4">
-            <div class="vt-onboarding-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <div class="vt-onboarding-illustration vt-onboarding-illustration-success">
+              <svg viewBox="0 0 120 120" fill="none">
+                <circle cx="60" cy="60" r="45" stroke="#fff" stroke-width="3" fill="none" class="vt-onboarding-success-circle"/>
+                <path d="M40 60L55 75L80 45" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" class="vt-onboarding-checkmark"/>
+              </svg>
             </div>
-            <div class="vt-onboarding-title">Quick Search</div>
-            <div class="vt-onboarding-text">
-              Open the smart command palette to search the web, your history, or switch between open tabs instantly.
-            </div>
-            <div class="vt-onboarding-shorcut-tip" style="margin-bottom: 8px;">
-              <span class="vt-key">Alt</span> + <span class="vt-key">T</span>
-              <span class="vt-shortcut-text">New Tab Search</span>
-            </div>
-            <div class="vt-onboarding-shorcut-tip">
-              <span class="vt-key">Alt</span> + <span class="vt-key">K</span>
-              <span class="vt-shortcut-text">Edit Current URL</span>
-            </div>
-          </div>
-          <div class="vt-onboarding-step" data-step="5">
-            <div class="vt-onboarding-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
-            <div class="vt-onboarding-title">You're All Set!</div>
-            <div class="vt-onboarding-text">
-              Ready to experience a more tranquil way of browsing? Enjoy Zenith Vertical Tabs.
+            <div class="vt-onboarding-badge vt-onboarding-badge-success">Ready</div>
+            <h2 class="vt-onboarding-title">You're All Set!</h2>
+            <p class="vt-onboarding-text">
+              Enjoy a cleaner, more focused browsing experience with Zenith.
+            </p>
+            <div class="vt-onboarding-shortcuts-grid">
+              <div class="vt-onboarding-shortcut-card">
+                <div class="vt-onboarding-keys">
+                  <span class="vt-key">Alt</span><span class="vt-key-plus">+</span><span class="vt-key">T</span>
+                </div>
+                <span>New Tab</span>
+              </div>
+              <div class="vt-onboarding-shortcut-card">
+                <div class="vt-onboarding-keys">
+                  <span class="vt-key">Alt</span><span class="vt-key-plus">+</span><span class="vt-key">K</span>
+                </div>
+                <span>Edit URL</span>
+              </div>
             </div>
           </div>
         </div>
         <div class="vt-onboarding-footer">
-          <div class="vt-onboarding-dots">
-            <div class="vt-onboarding-dot active" data-step="1"></div>
-            <div class="vt-onboarding-dot" data-step="2"></div>
-            <div class="vt-onboarding-dot" data-step="3"></div>
-            <div class="vt-onboarding-dot" data-step="4"></div>
-            <div class="vt-onboarding-dot" data-step="5"></div>
+          <button class="vt-onboarding-btn vt-onboarding-btn-secondary" id="vt-onboarding-skip">Skip</button>
+          <div class="vt-onboarding-step-indicator">
+            <span id="vt-onboarding-step-current">1</span>
+            <span class="vt-onboarding-step-divider">/</span>
+            <span id="vt-onboarding-step-total">4</span>
           </div>
-          <div class="vt-onboarding-btns">
-            <button class="vt-onboarding-btn vt-onboarding-btn-secondary" id="vt-onboarding-skip">Skip</button>
-            <button class="vt-onboarding-btn vt-onboarding-btn-primary" id="vt-onboarding-next">Next</button>
-          </div>
+          <button class="vt-onboarding-btn vt-onboarding-btn-primary" id="vt-onboarding-next">
+            <span>Continue</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -290,7 +331,6 @@ elements.onboardingOverlay = shadow.getElementById('vt-onboarding-overlay');
 elements.onboardingNextBtn = shadow.getElementById('vt-onboarding-next');
 elements.onboardingSkipBtn = shadow.getElementById('vt-onboarding-skip');
 elements.onboardingSteps = shadow.querySelectorAll('.vt-onboarding-step');
-elements.onboardingDots = shadow.querySelectorAll('.vt-onboarding-dot');
 elements.onboardingRefreshBtn = shadow.getElementById('vt-onboarding-refresh-tabs-btn');
 elements.resizeHandle = shadow.getElementById('vt-resize-handle');
 
