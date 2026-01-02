@@ -27,8 +27,56 @@
     opacity: 1;
 }
 
+/* Pinned state - sidebar pushes content instead of overlaying */
+#vertical-tabs-sidebar.vt-pinned {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Disable transitions during resize for smooth dragging */
+#vertical-tabs-sidebar.vt-resizing {
+    transition: none !important;
+}
+
 #vertical-tabs-sidebar.vt-no-transition {
     transition: none !important;
+}
+
+/* Resize Handle */
+#vt-resize-handle {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    width: 8px;
+    height: 100%;
+    cursor: ew-resize;
+    z-index: 10;
+    transition: background 0.15s ease;
+}
+
+#vt-resize-handle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+#vt-resize-handle:hover::before {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#vt-resize-handle:active::before,
+#vertical-tabs-sidebar.vt-resizing #vt-resize-handle::before {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.4);
 }
 
 #vertical-tabs-header {

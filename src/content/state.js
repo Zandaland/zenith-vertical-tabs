@@ -38,7 +38,11 @@ export const state = {
     onboardingTotalSteps: 5,
 
     // Preview timeout
-    previewTimeout: null
+    previewTimeout: null,
+
+    // Sidebar resize state
+    sidebarWidth: 260, // Default width
+    isResizing: false
 };
 
 // DOM element references - populated after DOM is created
@@ -72,5 +76,6 @@ export const elements = {
     onboardingSkipBtn: null,
     onboardingSteps: null,
     onboardingDots: null,
-    onboardingRefreshBtn: null
+    onboardingRefreshBtn: null,
+    resizeHandle: null
 };
